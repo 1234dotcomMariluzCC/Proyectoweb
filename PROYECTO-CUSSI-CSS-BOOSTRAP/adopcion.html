@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>adopcion</title>
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="d-block px-3 py-2 text-center text-bold skippy">
+        Bienvenido a Refugio de Rayos de Sol
+      </div>
+    <div class="wrapper">
+        <aside id="sidebar">
+            <div class="d-flex">
+                <button class="toggle-btn" type="button">
+                    <i class="lni lni-grid-alt"></i>
+                </button>
+                <div class="sidebar-logo">
+                    <a href="#">Refugio de Rayos de Sol</a>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                    <a href="./index.html" class="sidebar-link">
+                        <i class="lni lni-user"></i>
+                        <span>Perfil</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="./informacion.html" class="sidebar-link">
+                        <i class="lni lni-agenda"></i>
+                        <span>informacion</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="./quienes.html" class="sidebar-link">
+                        <i class="lni lni-popup"></i>
+                        <span>Quienes somos?</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="./adopcion.html" class="sidebar-link">
+                      <i class="lni lni-user"></i>
+                        <span>Adopcion</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="#" class="sidebar-link">
+                    <i class="lni lni-exit"></i>
+                    <span>volver al inicio</span>
+                </a>
+            </div>
+        </aside>
+        <div class="main p-3">
+            <div class="container">
+                <h2>Formulario de Adopción de Perros</h2>
+                <form id="adoptionForm">
+                    <h3>Datos del dueño</h3>
+                    <div class="mb-3">
+                        <label for="ownerCI" class="form-label">C.I.</label>
+                        <input type="text" class="form-control" id="ownerCI" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ownerName" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="ownerName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ownerSurname" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="ownerSurname" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ownerAddress" class="form-label">Dirección</label>
+                        <input type="text" class="form-control" id="ownerAddress" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ownerPhone" class="form-label">Teléfono</label>
+                        <input type="tel" class="form-control" id="ownerPhone" required>
+                    </div>
+            
+                    <h3>Datos del perro</h3>
+                    <div class="mb-3">
+                        <label for="dogName" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="dogName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dogBreed" class="form-label">Raza</label>
+                        <input type="text" class="form-control" id="dogBreed" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dogColor" class="form-label">Color</label>
+                        <input type="text" class="form-control" id="dogColor" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dogAge" class="form-label">Edad</label>
+                        <input type="number" class="form-control" id="dogAge" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="adoptionDate" class="form-label">Día de Adopción</label>
+                        <input type="date" class="form-control" id="adoptionDate" required>
+                    </div>
+            
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            
+                <div id="invoice" class="mt-5"></div>
+            </div>
+            
+            <script>
+            document.getElementById('adoptionForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+            
+                // Aquí recoges los datos del formulario
+                var ownerCI = document.getElementById('ownerCI').value;
+                var ownerName = document.getElementById('ownerName').value;
+                var ownerSurname = document.getElementById('ownerSurname').value;
+                var ownerAddress = document.getElementById('ownerAddress').value;
+                var ownerPhone = document.getElementById('ownerPhone').value;
+            
+                var dogName = document.getElementById('dogName').value;
+                var dogBreed = document.getElementById('dogBreed').value;
+                var dogColor = document.getElementById('dogColor').value;
+                var dogAge = document.getElementById('dogAge').value;
+                var adoptionDate = document.getElementById('adoptionDate').value;
+            
+                // Aquí muestras los datos en el cuadro de texto
+                document.getElementById('invoice').innerHTML = `
+                    <div class="alert alert-success" role="alert">
+                        Datos ingresados correctamente
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Factura de Adopción
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Datos del dueño</h5>
+                            <p class="card-text">C.I.: ${ownerCI}</p>
+                            <p class="card-text">Nombre: ${ownerName}</p>
+                            <p class="card-text">Apellido: ${ownerSurname}</p>
+                            <p class="card-text">Dirección: ${ownerAddress}</p>
+                            <p class="card-text">Teléfono: ${ownerPhone}</p>
+            
+                            <h5 class="card-title">Datos del perro</h5>
+                            <p class="card-text">Nombre: ${dogName}</p>
+                            <p class="card-text">Raza: ${dogBreed}</p>
+                            <p class="card-text">Color: ${dogColor}</p>
+                            <p class="card-text">Edad: ${dogAge}</p>
+                            <p class="card-text">Día de Adopción: ${adoptionDate}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            </script>
+            
+            <div class="centrar">
+                <div class="card" style="width: 18rem;">
+                    <img src="./imagenes/3.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Gracias</p>
+                    </div>
+                </div>
+            </div>
+
+
+            
+        </div>      
+    </div>
+
+    <footer class="bg-primary text-white text-center text-lg-start">
+        <div class="container p-4">
+          <div class="row">
+            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+              <p>
+                Creado: Mariluz ibonne Cussi cori
+                implementado jascritp
+              </p>
+            </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2024
+        </div> 
+      </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
